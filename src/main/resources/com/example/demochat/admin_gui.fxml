@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demochat.AdminController">
+    <children>
+
+        <Label layoutX="700.0" layoutY="335.0" text="Empty">
+            <font>
+                <Font size="17.0"  />
+            </font>
+        </Label>
+
+        <AnchorPane prefHeight="53.0" prefWidth="1020.0" style="-fx-background-color: blue;">
+            <children>
+                <Label fx:id="top_Messages" layoutX="476.0" layoutY="16.0" text="Messages" textFill="WHITE" style="-fx-font-size: 17; -fx-font-weight: bold">
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="53.0" prefHeight="696.0" prefWidth="355.0" style="-fx-background-color: gray;">
+            <children>
+                <MFXScrollPane hbarPolicy="NEVER" prefHeight="696.0" prefWidth="355.0">
+                    <content>
+                        <VBox fx:id="user_card_VBOX" prefHeight="840.0" prefWidth="353.0" />
+                    </content>
+                </MFXScrollPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="messages_anchorpane" layoutX="355.0" layoutY="53.0" prefHeight="696.0" prefWidth="665.0" style="-fx-background-color: #000000;">
+            <children>
+                <MFXScrollPane fx:id="messages_scrollPane" hbarPolicy="NEVER" prefHeight="614.0" prefWidth="665.0">
+                    <content>
+                        <VBox fx:id="messages_vbox" prefHeight="793.0" prefWidth="661.0" style="-fx-background-color: gray" />
+                    </content>
+                </MFXScrollPane>
+                <MFXTextField fx:id="message_inputBox" floatMode="DISABLED" layoutX="86.0" layoutY="633.0" prefHeight="49.0" prefWidth="384.0">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </MFXTextField>
+                <MFXButton fx:id="sendBTN" layoutX="500.0" layoutY="633.0" prefHeight="49.0" prefWidth="91.0" text="Send" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
