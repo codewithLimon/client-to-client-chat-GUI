@@ -156,21 +156,21 @@ public class ClientChatController implements Initializable {
                 @Override
                 public void run() {
                     String Non_extracted_message=messageBox.getText();
-////                    sendMessage(message,false);
-//
-//                    String[] extracted_message=Non_extracted_message.split(",");
-//                    String to=extracted_message[0];
-//                    String message=extracted_message[1];
+//                    sendMessage(message,false);
+
+                    String[] extracted_message=Non_extracted_message.split(",");
+                    String to=extracted_message[0];
+                    String message=extracted_message[1];
 
                     Message msg=new Message();
 
                     msg.setFrom(name);
-                    msg.setTo("admin");
-                    msg.setText(Non_extracted_message);
+                    msg.setTo(to);
+                    msg.setText(message);
                     System.out.println(msg);
                     try {
                         networkUtil.write(msg);
-                        sendMessage(Non_extracted_message,false);
+                        sendMessage(message,false);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -188,25 +188,27 @@ public class ClientChatController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             name = result.get();
-            if(!name.toLowerCase().equals("admin")){
-                try{
-                    networkUtil=new NetworkUtil("127.0.0.1",33335);
-                    networkUtil.write(name);
+//            if(!name.toLowerCase().equals("admin")){
+//
+//            }else {
+//                try {
+//                    Parent parent= FXMLLoader.load(getClass().getResource("admin_gui.fxml"));
+//                    main_panel.getChildren().add(parent);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
-                    clientName.setText(name);
-                    new Thread(new ReadThreadClient()).start();
+            try{
+                networkUtil=new NetworkUtil("127.0.0.1",33335);
+                networkUtil.write(name);
+
+                clientName.setText(name);
+                new Thread(new ReadThreadClient()).start();
 
 
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }else {
-                try {
-                    Parent parent= FXMLLoader.load(getClass().getResource("admin_gui.fxml"));
-                    main_panel.getChildren().add(parent);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }else {
             System.exit(0);
